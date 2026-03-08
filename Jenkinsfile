@@ -16,7 +16,7 @@ pipeline {
 
         stage('Run Container') {
             steps {
-                sh 'docker run -d -p 3000:3000 seven-wonders-app'
+                sh 'docker run -d -p 3000:80 seven-wonders-app'
             }
         }
     }
