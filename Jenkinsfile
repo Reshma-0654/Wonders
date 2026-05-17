@@ -3,7 +3,7 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "reshma0654/sevenwonders"
+        IMAGE_NAME = "reshma6540/sevenwonders"
     }
 
     stages {
