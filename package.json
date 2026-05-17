@@ -2,9 +2,9 @@
   "name": "seven-wonders-project",
   "version": "1.0.0",
   "description": "Seven Wonders Node.js Application",
-  "main": "src/index.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node src/index.js"
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "Reshma",
