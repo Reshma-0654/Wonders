@@ -1,4 +1,5 @@
 pipeline {
+
     agent any
 
     environment {
@@ -7,9 +8,16 @@ pipeline {
 
     stages {
 
-        stage('Clone') {
+        stage('Checkout') {
             steps {
-                git 'https://github.com/Reshma-0654/Wonders.git'
+                checkout scmGit(
+                    branches: [[name: '*/main']],
+                    extensions: [],
+                    userRemoteConfigs: [[
+                        credentialsId: 'github_creds',
+                        url: 'https://github.com/Reshma-0654/Wonders.git'
+                    ]]
+                )
             }
         }
 
@@ -50,9 +58,24 @@ pipeline {
 
         stage('Run Container') {
             steps {
-                sh 'docker run -d -p 8081:3000 $IMAGE_NAME'
+                sh 'docker run -d -p 3003:3003 $IMAGE_NAME'
             }
         }
 
+    }
+
+    post {
+
+        success {
+            echo 'Pipeline Executed Successfully'
+        }
+
+        failure {
+            echo 'Pipeline Failed'
+        }
+
+        always {
+            echo 'Pipeline Completed'
+        }
     }
 }
